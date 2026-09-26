@@ -18,27 +18,29 @@
 
 <!-- Generated from docs/appstore/privacy-policy-draft.md — edit the markdown, then regenerate. -->
     <h2>Summary</h2>
-    <p>Launchlane helps B2B onboarding teams track customer onboarding in a shared workspace. To do that it needs an account, stores your workspace in our hosted database, and uses Apple for subscriptions. If you choose to use Copilot, relevant workspace records are sent to an AI provider to generate a suggestion. We don't sell your data, show ads, or track you across apps.</p>
+    <p>Launchlane helps B2B onboarding teams track customer onboarding in a shared workspace. To do that it needs an account, stores your workspace in our hosted database, and uses Apple for subscriptions. If you choose to use Copilot or the assistants, the relevant text is sent to an AI provider to generate an answer. We don't sell your data, show ads, or track you across apps.</p>
     <h2>Information we collect</h2>
     <ul>
-      <li><strong>Account:</strong> your email address, and a password only if one was set up for your account (for example, an App Review account). Everyday sign-in uses one-time email codes.</li>
+      <li><strong>Account:</strong> your email address, and a password only if one was set up for your account (for example, an App Review account). You can sign in with a one-time email code, Sign in with Apple or Google. With Apple or Google we receive your email address (with Apple this can be a private relay address) and, if you share it, your name.</li>
+      <li><strong>Onboarding answers (optional):</strong> your role, team size, how many customers you onboard, how you track onboarding today and your main goal — only the questions you answer. They're kept on your device and saved to your account when you sign in, to tailor Launchlane.</li>
       <li><strong>Workspace content you enter:</strong> workspace names and membership, customer names, onboarding types, milestones, blockers, evidence, interventions, outcomes and notes, including drafts of customer notes.</li>
       <li><strong>Subscription records from Apple:</strong> product, status, renewal and expiry dates, transaction identifiers and whether the purchase was made in Apple's test environment. Apple processes the payment; we never receive card details.</li>
-      <li><strong>Copilot usage:</strong> the time and type of each Copilot request, used to enforce usage limits.</li>
+      <li><strong>Copilot and assistant usage:</strong> the time and type of each request, used to enforce usage limits.</li>
       <li><strong>On your device:</strong> a cache of your workspace for offline use and your sign-in session in the iOS Keychain.</li>
     </ul>
     <p>We don't request contacts, location, photos, or microphone access, and this version includes no advertising, third-party analytics or crash-reporting SDKs.</p>
     <h2>How we use it</h2>
-    <p>To sign you in, control who can access each workspace, keep your devices in sync, verify your subscription, answer Copilot requests you make, and enforce usage limits.</p>
-    <h2>Copilot (AI suggestions)</h2>
-    <p>Copilot asks for your permission before it shares anything, and you can withdraw it anytime in Settings → Copilot. It runs only when you ask it to. Launchlane then sends the relevant workspace records — and, for Capture, the note you typed — to our AI provider, Anthropic, PBC, to generate the answer. Before sending, Launchlane removes email addresses, phone numbers and text that looks like passwords, keys or card numbers. Copilot only suggests: nothing it produces is saved, applied or sent until you review and confirm it. Under Anthropic's commercial terms, these inputs and outputs are not used to train its models and are deleted within 30 days, unless longer retention is needed to enforce its usage policies or to comply with the law. In Demo Mode the sample Copilot runs entirely on your device with fictional data.</p>
+    <p>To sign you in, control who can access each workspace, keep your devices in sync, verify your subscription, answer Copilot and assistant requests you make, tailor the app to your onboarding answers, and enforce usage limits.</p>
+    <h2>Copilot and the in-app assistant (AI)</h2>
+    <p>Copilot and the Assistant tab ask for your permission before they share anything, and you can withdraw it anytime in Settings → Copilot. They run only when you ask. Launchlane then sends the relevant workspace records — and the note or question you typed — to our AI provider, Google (Gemini API), to generate the answer. Before sending, Launchlane removes email addresses, phone numbers and text that looks like passwords, keys or card numbers. They only suggest: nothing they produce is saved, applied or sent until you review and confirm it. We use Google's paid Gemini API: under its terms, Google does not use these inputs and outputs to improve its products, and keeps them only for a limited time to detect abuse and meet legal obligations. In Demo Mode the sample Copilot and assistant run entirely on your device with fictional data.</p>
     <h2>Support assistant</h2>
-    <p>The Help &amp; Support assistant (in the app and on our support website) answers questions from Launchlane's help content. It asks before you start, and the messages you type are sent to our AI provider, Anthropic, PBC, to generate answers — email addresses, phone numbers and credential-like text are removed first. Launchlane does not store the conversation. To prevent abuse we keep a one-way hash of your network address and the time of each request for up to 24 hours. If you choose to email us, we receive your email and anything you include.</p>
+    <p>The Help &amp; Support assistant (in the app and on our support website) answers questions from Launchlane's help content. It asks before you start, and the messages you type are sent to our AI provider, Google (Gemini API), to generate answers — email addresses, phone numbers and credential-like text are removed first. Launchlane does not store the conversation. To prevent abuse we keep a one-way hash of your network address and the time of each request for up to 24 hours. If you choose to email us, we receive your email and anything you include.</p>
     <h2>Service providers</h2>
     <ul>
       <li>Supabase — hosting, authentication, database and server functions.</li>
       <li>Apple — App Store billing and subscription management.</li>
-      <li>Anthropic, PBC — AI processing, only when you use Copilot or the support assistant.</li>
+      <li>Google (Gemini API) — AI processing, only when you use Copilot or an assistant.</li>
+      <li>Apple and Google — sign-in, only if you choose Sign in with Apple or Google.</li>
     </ul>
     <p>We share data with these providers only to run Launchlane, and each is bound by terms that require it to protect your data with the same or equal protection as described in this policy.</p>
     <h2>Sharing</h2>
