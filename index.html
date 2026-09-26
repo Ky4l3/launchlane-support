@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Launchlane support for B2B SaaS onboarding teams.">
+  <title>Launchlane Support</title>
+  <style>
+    :root{--navy:#101d2e;--ink:#1d2a38;--muted:#617080;--mint:#8ed8bf;--paper:#f6f8f7;--line:#dbe4e0;--coral:#ee8d73}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .shell{max-width:920px;margin:0 auto;padding:28px 22px 70px}.top{display:flex;justify-content:space-between;gap:24px;align-items:center;margin-bottom:84px}.brand{display:flex;align-items:center;gap:12px;color:var(--navy);font-weight:750;letter-spacing:-.02em}.mark{width:28px;height:28px;border-radius:9px;background:var(--navy);position:relative}.mark:after{content:"";position:absolute;width:12px;height:5px;border-left:3px solid var(--mint);border-bottom:3px solid var(--mint);transform:rotate(-45deg);left:8px;top:10px}.nav{display:flex;gap:18px;flex-wrap:wrap}.nav a{color:var(--muted);text-decoration:none}.nav a:hover{color:var(--navy)}
+    .eyebrow{color:#357d69;font-size:12px;font-weight:750;letter-spacing:.13em;text-transform:uppercase}.hero{max-width:680px;margin-bottom:58px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-.055em;margin:14px 0 22px;color:var(--navy)}.hero p{font-size:20px;line-height:1.45;color:var(--muted);max-width:620px}
+    .layout{display:grid;grid-template-columns:1.1fr .9fr;gap:52px}.section{border-top:1px solid var(--line);padding-top:25px;margin-top:28px}.section h2{font-size:22px;letter-spacing:-.025em;margin:0 0 12px;color:var(--navy)}.section h3{font-size:16px;margin:23px 0 5px;color:var(--navy)}.section p{margin:8px 0;color:var(--muted)}.section ol{padding-left:22px;color:var(--muted)}.section li{padding:4px 0}.aside{background:var(--navy);color:#e9f1ef;padding:27px;border-radius:18px;align-self:start}.aside h2{color:white;margin-top:0}.aside p{color:#c4d4d0}.contact{display:block;color:var(--mint);font-weight:700;text-decoration:none;overflow-wrap:anywhere}.footer{border-top:1px solid var(--line);margin-top:70px;padding-top:22px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer a{color:var(--muted)}
+    @media(max-width:720px){.top{align-items:flex-start;flex-direction:column;margin-bottom:60px}.layout{grid-template-columns:1fr;gap:22px}.hero h1{font-size:52px}.footer{display:block}.footer span{display:block;margin-bottom:10px}}
+.assistant{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;margin:0 0 34px}.assistant h2{margin-top:0}.log{display:flex;flex-direction:column;gap:10px;margin:14px 0;max-height:420px;overflow-y:auto}.msg{padding:10px 14px;border-radius:14px;max-width:85%;white-space:pre-wrap;line-height:1.5}.msg.user{align-self:flex-end;background:var(--mint);color:#fff}.msg.bot{align-self:flex-start;background:var(--paper);color:var(--ink)}.composer{display:flex;gap:8px}.composer input{flex:1;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit}.btn{background:var(--mint);color:#fff;border:0;border-radius:10px;padding:11px 16px;font:inherit;font-weight:650;cursor:pointer}.btn.secondary{background:#fff;color:var(--mint);border:1px solid var(--mint)}.small{font-size:14px;color:var(--muted)}.hidden{display:none}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <a class="brand" href="./"><span class="mark" aria-hidden="true"></span><span>Launchlane</span></a>
+      <nav class="nav" aria-label="Legal and support navigation">
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Support</div>
+      <h1>Keep onboarding moving.</h1>
+      <p>Launchlane is a calm daily control room for B2B SaaS onboarding teams. It surfaces which customer is blocked, who owns the next action and where first value is at risk.</p>
+    </section>
+
+    <section class="assistant" id="assistant" aria-labelledby="assistant-title">
+      <h2 id="assistant-title">Ask the Launchlane assistant</h2>
+      <p class="small">Answers questions about signing in, subscriptions, sync, Copilot and your account — usually right away.</p>
+      <div id="consent">
+        <p class="small"><strong>This assistant uses AI.</strong> Your messages are sent to our AI provider, Anthropic, PBC, to answer them. Don't include passwords, sign-in codes or payment details.</p>
+        <button class="btn" id="start">Start chat</button>
+      </div>
+      <div id="chat" class="hidden">
+        <div class="log" id="log" aria-live="polite"></div>
+        <form class="composer" id="form">
+          <input id="input" type="text" maxlength="1500" placeholder="Ask a question" aria-label="Your question" autocomplete="off">
+          <button class="btn" type="submit">Send</button>
+        </form>
+      </div>
+      <p id="escalate" class="hidden"><a class="btn secondary" id="mail" href="mailto:launchlaneapp@gmail.com">Email support</a> <span class="small">Prefilled with what you asked.</span></p>
+      <p class="small">Prefer email? Write to <a href="mailto:launchlaneapp@gmail.com">launchlaneapp@gmail.com</a>.</p>
+    </section>
+    <script>
+    (() => {
+      const endpoint = "https://tkeykzronzpfrgavpkwu.supabase.co/functions/v1/support-assistant";
+      const $ = (id) => document.getElementById(id);
+      const messages = [];
+      const add = (role, text) => {
+        const div = document.createElement("div");
+        div.className = "msg " + (role === "user" ? "user" : "bot");
+        div.textContent = text;          // never innerHTML: replies are shown as plain text
+        $("log").appendChild(div);
+        $("log").scrollTop = $("log").scrollHeight;
+      };
+      const escalate = (e) => {
+        const url = "mailto:" + (e.email || "launchlaneapp@gmail.com") + "?subject=" + encodeURIComponent(e.subject || "Launchlane support request") + "&body=" + encodeURIComponent(e.body || "");
+        $("mail").href = url;
+        $("escalate").classList.remove("hidden");
+      };
+      $("start").addEventListener("click", () => {
+        $("consent").classList.add("hidden");
+        $("chat").classList.remove("hidden");
+        add("assistant", "Hi! What can I help you with?");
+        $("input").focus();
+      });
+      $("form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const text = $("input").value.trim();
+        if (!text) return;
+        $("input").value = "";
+        add("user", text);
+        messages.push({ role: "user", content: text });
+        try {
+          const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: messages.slice(-24) }) });
+          const data = await response.json();
+          if (!response.ok) {
+            add("assistant", (data && data.message) || "The assistant is unavailable right now. Please email support.");
+            escalate((data && data.escalation) || {});
+            return;
+          }
+          add("assistant", data.answer);
+          messages.push({ role: "assistant", content: data.answer });
+          if (data.escalation) escalate(data.escalation);
+        } catch (err) {
+          add("assistant", "The assistant can't be reached right now. Please email support.");
+          escalate({ body: "What I need help with:\n- " + text });
+        }
+      });
+    })();
+    </script>
+
+    <div class="layout">
+      <div>
+        <section class="section">
+          <h2>Getting started</h2>
+          <ol>
+            <li>Sign in with your work email — Launchlane emails you a six-digit code. (Or tap <strong>Explore with sample data</strong> to try Demo Mode first.)</li>
+            <li>Create your workspace and start the <strong>Launchlane Workspace</strong> subscription.</li>
+            <li>In <strong>Workflows</strong>, tap <strong>+</strong> to add a customer. Each one starts at Kickoff.</li>
+            <li><strong>Today</strong> shows your decision queue — the highest-priority customer risk first.</li>
+            <li>Open a workflow to see its progress rail (Kickoff → Access → Setup → Validate → Live). Mark milestones complete, flag and clear blockers, record evidence, interventions and outcomes.</li>
+          </ol>
+        </section>
+
+        <section class="section">
+          <h2>Frequently asked questions</h2>
+<!-- Generated from docs/appstore/support-page-draft.md -->
+          <h3>Do I need an account?</h3>
+          <p>Yes, for a live workspace — your workspace is stored securely so it's available on all your devices. Demo Mode works without one.</p>
+          <h3>Where is my data stored?</h3>
+          <p>In Launchlane's hosted database (so it syncs across your devices), with a cache on your device for offline use. See the Privacy Policy for details.</p>
+          <h3>Does it work offline?</h3>
+          <p>Yes. You can keep working from the cached workspace; changes are saved on the device and sync automatically when you're back online. The banner shows how many changes are waiting.</p>
+          <h3>How does the subscription work?</h3>
+          <p>One Launchlane Workspace subscription unlocks one workspace, billed monthly or annually through your Apple ID. It renews automatically unless you cancel at least 24 hours before the period ends. Manage or cancel in Settings → your name → Subscriptions, or from Launchlane's Settings → Subscription → Manage subscription.</p>
+          <h3>I reinstalled or got a new iPhone.</h3>
+          <p>Sign in with the same email, then use <strong>Restore Purchases</strong> on the subscription screen if needed.</p>
+          <h3>What is Copilot?</h3>
+          <p>Optional AI suggestions — a daily brief, risk explanations, next steps, draft customer notes, and turning a quick note into proposed updates. Copilot only suggests; nothing is saved or sent until you confirm it. It sends the relevant workspace records to our AI provider when you use it (contact details and credential-like text are removed first).</p>
+          <h3>Are customer notes sent automatically?</h3>
+          <p>No. Launchlane only prepares drafts, labelled for human review. It never sends messages — you send anything yourself, outside the app.</p>
+          <h3>What is Demo Mode?</h3>
+          <p>A clearly labelled sample-data mode for exploring before adding real data. Demo data stays on your device, never mixes with your live workspace, and is never uploaded. <strong>Reset demo data</strong> in Settings restores the sample set.</p>
+          <h3>How do I delete my account?</h3>
+          <p>Settings → Account → Delete account, then confirm with a fresh code. This deletes your login, your account data and any workspace where you're the only member. Deleting your account doesn't cancel your Apple subscription — cancel that in your Apple ID settings. If you own a workspace that other people use, contact us to transfer ownership first.</p>
+          <h3>Accessibility.</h3>
+          <p>Launchlane supports Dynamic Type (including accessibility text sizes), VoiceOver labels, Reduce Motion, and light/dark appearance.</p>
+        </section>
+      </div>
+
+      <aside class="aside">
+        <h2>Contact support</h2>
+        <p>For product questions, accessibility feedback or technical issues, contact:</p>
+        <a class="contact" href="mailto:launchlaneapp@gmail.com">launchlaneapp@gmail.com</a>
+        <p>Jaden Kyle</p>
+        <p>Typical response time: within 2 business days.</p>
+      </aside>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Jaden Kyle</span>
+      <span><a href="./privacy.html">Privacy Policy</a> · <a href="./terms.html">Terms of Use</a></span>
+    </footer>
+  </main>
+</body>
+</html>
