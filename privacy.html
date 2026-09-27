@@ -14,27 +14,27 @@
     <header class="top"><a class="brand" href="./">Launchlane</a><nav class="nav"><a href="./">Support</a><a href="./terms.html">Terms</a></nav></header>
     <div class="eyebrow">Privacy</div>
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective date: 26 September 2026 · Provider: Mike Sila</p>
+    <p class="meta">Effective date: 27 September 2026 · Provider: Mike Sila</p>
 
 <!-- Generated from docs/appstore/privacy-policy-draft.md — edit the markdown, then regenerate. -->
     <h2>Summary</h2>
     <p>Launchlane helps B2B onboarding teams track customer onboarding in a shared workspace. To do that it needs an account, stores your workspace in our hosted database, and uses Apple for subscriptions. If you choose to use Copilot or the assistants, the relevant text is sent to an AI provider to generate an answer. We don't sell your data, show ads, or track you across apps.</p>
     <h2>Information we collect</h2>
     <ul>
-      <li><strong>Account:</strong> your email address, and a password only if one was set up for your account (for example, an App Review account). You can sign in with a one-time email code, Sign in with Apple or Google. With Apple or Google we receive your email address (with Apple this can be a private relay address) and, if you share it, your name.</li>
+      <li><strong>Account:</strong> your email address, and a password if you create one (our authentication provider stores only a one-way hash of it). You can sign in with a one-time email code, a password, Sign in with Apple or Google. With Apple or Google we receive your email address (with Apple this can be a private relay address) and, if you share it, your name.</li>
       <li><strong>Onboarding answers (optional):</strong> your role, team size, how many customers you onboard, how you track onboarding today and your main goal — only the questions you answer. They're kept on your device and saved to your account when you sign in, to tailor Launchlane.</li>
-      <li><strong>Workspace content you enter:</strong> workspace names and membership, customer names, onboarding types, milestones, blockers, evidence, interventions, outcomes and notes, including drafts of customer notes.</li>
+      <li><strong>Workspace content you enter:</strong> workspace names and membership (including teammates' email addresses and roles), customer names, onboarding types, milestones, blockers, evidence, interventions, outcomes and notes, including drafts of customer notes. If you share a customer progress link, updates your customer sends through it are saved to that customer's record.</li>
       <li><strong>Subscription records from Apple:</strong> product, status, renewal and expiry dates, transaction identifiers and whether the purchase was made in Apple's test environment. Apple processes the payment; we never receive card details.</li>
       <li><strong>Copilot and assistant usage:</strong> the time and type of each request, used to enforce usage limits.</li>
-      <li><strong>On your device:</strong> a cache of your workspace for offline use and your sign-in session in the iOS Keychain.</li>
+      <li><strong>On your device:</strong> a cache of your workspace for offline use and your sign-in session in the iOS Keychain. If you turn on blocker reminders, they are scheduled as local notifications on your device.</li>
     </ul>
     <p>We don't request contacts, location, photos, or microphone access, and this version includes no advertising, third-party analytics or crash-reporting SDKs.</p>
     <h2>How we use it</h2>
     <p>To sign you in, control who can access each workspace, keep your devices in sync, verify your subscription, answer Copilot and assistant requests you make, tailor the app to your onboarding answers, and enforce usage limits.</p>
     <h2>Copilot and the in-app assistant (AI)</h2>
-    <p>Copilot and the Assistant tab ask for your permission before they share anything, and you can withdraw it anytime in Settings → Copilot. They run only when you ask. Launchlane then sends the relevant workspace records — and the note or question you typed — to our AI provider, Google (Gemini API), to generate the answer. Before sending, Launchlane removes email addresses, phone numbers and text that looks like passwords, keys or card numbers. They only suggest: nothing they produce is saved, applied or sent until you review and confirm it. We use Google's paid Gemini API: under its terms, Google does not use these inputs and outputs to improve its products, and keeps them only for a limited time to detect abuse and meet legal obligations. In Demo Mode the sample Copilot and assistant run entirely on your device with fictional data.</p>
+    <p>Copilot and the Assistant tab ask for your permission before they share anything, and you can withdraw it anytime in Settings → Copilot. They run only when you ask. Launchlane then sends the relevant workspace records — and the note or question you typed — to our AI provider, Google (Gemini API), to generate the answer. Before sending, Launchlane removes email addresses, phone numbers and text that looks like passwords, keys or card numbers. They only suggest: nothing they produce is saved, applied or sent until you review and confirm it. We use Google's paid Gemini API: under its terms, Google does not use these inputs and outputs to improve its products, and keeps them only for a limited time to detect abuse and meet legal obligations. In Demo Mode the sample Copilot and assistant run on your device with fictional data; if you ask the Assistant something the sample can't answer, only that question is sent to the support assistant (below), after you agree.</p>
     <h2>Support assistant</h2>
-    <p>The Help &amp; Support assistant (in the app and on our support website) answers questions from Launchlane's help content. It asks before you start, and the messages you type are sent to our AI provider, Google (Gemini API), to generate answers — email addresses, phone numbers and credential-like text are removed first. Launchlane does not store the conversation. To prevent abuse we keep a one-way hash of your network address and the time of each request for up to 24 hours. If you choose to email us, we receive your email and anything you include.</p>
+    <p>The Help &amp; Support assistant (in the app and on our support website) answers questions about Launchlane from its help content, plus general onboarding and customer-success questions. It asks before you start, and the messages you type are sent to our AI provider, Google (Gemini API), to generate answers — email addresses, phone numbers and credential-like text are removed first. Launchlane does not store the conversation. To prevent abuse we keep a one-way hash of your network address and the time of each request for up to 24 hours. If you choose to email us, we receive your email and anything you include.</p>
     <h2>Service providers</h2>
     <ul>
       <li>Supabase — hosting, authentication, database and server functions.</li>
@@ -44,7 +44,7 @@
     </ul>
     <p>We share data with these providers only to run Launchlane, and each is bound by terms that require it to protect your data with the same or equal protection as described in this policy.</p>
     <h2>Sharing</h2>
-    <p>Members of a workspace can see that workspace's content. We don't sell personal data or customer content. We may disclose information if required by law.</p>
+    <p>Members of a workspace can see that workspace's content and each other's email addresses and roles. If you create a customer progress link, anyone who has the link can see that customer's name, your workspace name, the goal, milestone progress and the current blocker — not emails or internal notes — and can send your team an update. Turn a link off anytime with Stop sharing; creating a new link replaces the old one. We don't sell personal data or customer content. We may disclose information if required by law.</p>
     <h2>Customer notes are drafts</h2>
     <p>Launchlane can help you draft a note to a customer. Drafts are labelled for human review and <strong>are never sent by the app</strong> — Launchlane has no messaging capability. Anything you send, you send yourself with your own tools.</p>
     <h2>Retention and deletion</h2>
